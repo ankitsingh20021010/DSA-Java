@@ -1,5 +1,7 @@
 //DAY 1
 //create a array day1 user input array size define by user and in array input given by user also 
+//Array Traversal for loop
+//Take Array Input
 package array;
 import java.util.*;
 public class Array{
