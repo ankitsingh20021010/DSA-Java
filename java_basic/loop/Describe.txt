@@ -1,0 +1,4 @@
+Loop	Kab Use Karte Hain?
+1.for	Jab number of iterations pehle se pata ho.
+2.while	Jab iterations ka count pehle se pata na ho.
+3.do-while	Jab code ko kam se kam ek baar chalana zaroori ho.
