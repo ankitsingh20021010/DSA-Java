@@ -1,3 +1,4 @@
+//try to all array operations in data structure
 import java.util.*;
 public class all_operation{
     static void printarr(int[] arr){
