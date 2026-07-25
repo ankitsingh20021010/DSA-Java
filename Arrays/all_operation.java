@@ -41,6 +41,29 @@ public class all_operation{
     return newarr;
 
  }
+ //search element
+ static void search_arr(int[] arr,Scanner sc){
+    System.out.print("Enter element:");
+    int element=sc.nextInt();
+    int flag=0;
+    for(int i=0; i<arr.length; i++){
+        if(arr[i]==element){
+            flag++;
+        }
+    }
+    if(flag==1){
+        System.out.println();
+        System.out.println();
+        System.out.println("Yes element "+ element+" is exist");
+        System.out.println();
+        System.out.println();
+
+    }
+    else{
+        System.out.println();
+        System.out.println("No elemet "+ element+" is not exist");
+    }
+ }
     public static void main(String[] args) {
      int[] arr={1,2,3,4,5,6,7,8};
      int i;
@@ -49,6 +72,7 @@ public class all_operation{
         System.out.println("2 for enter data at possition");
         System.out.println("3 for insert start possition");
         System.out.println("4 for Delete at start possition");
+        System.out.println("5 for Search element in array");
         System.out.print("enter number: ");
         Scanner sc=new Scanner(System.in);
         i=sc.nextInt();
@@ -66,6 +90,9 @@ public class all_operation{
             case 4:
             arr=delete_arr(arr);
             printarr(arr);
+            break;
+            case 5:
+            search_arr(arr,sc);
             default: 
                 break;
         }
