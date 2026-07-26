@@ -1,1 +1,148 @@
-about 6_Encapsulation.txt
+===================================================
+TOPIC 6: ENCAPSULATION
+===================================================
+
+1. ENCAPSULATION KYA HAI?
+-----------------------------
+Encapsulation ka matlab hai DATA (variables) aur CODE (methods) ko ek hi
+UNIT (Class) me WRAP/BIND karna, aur DATA ko OUTSIDE WORLD se HIDE karna
+(private banake), taaki koi bhi direct access na kar sake.
+
+Isse "DATA HIDING" bhi kehte hain.
+
+Real life example: MEDICINE CAPSULE
+   - Capsule ke andar powder/medicine hoti hai (data)
+   - Bahar se covering hoti hai (protection)
+   - Hum directly powder ko touch nahi karte, capsule hi use karte hain
+   Isi tarah class ke variables private hote hain, hum getter/setter
+   methods (public) ke through hi access karte hain.
+
+
+2. ENCAPSULATION KAISE ACHIEVE KARTE HAIN? (Steps)
+-------------------------------------------------------
+   Step 1: Class ke variables ko "private" bana do
+   Step 2: Unhe access karne ke liye PUBLIC "getter" aur "setter"
+           methods bana do
+
+class Student {
+    // Step 1: Data hidden (private)
+    private String name;
+    private int age;
+
+    // Step 2: Getter methods (data ko read karne ke liye)
+    public String getName() {
+        return name;
+    }
+    public int getAge() {
+        return age;
+    }
+
+    // Step 2: Setter methods (data ko set/update karne ke liye)
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setAge(int age) {
+        if (age > 0) {                 // VALIDATION - ye Encapsulation ka fayda hai
+            this.age = age;
+        } else {
+            System.out.println("Invalid age!");
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student s1 = new Student();
+
+        // s1.age = -5;      // ERROR! private hai, direct access NAHI kar sakte
+
+        s1.setName("Rahul");
+        s1.setAge(20);              // Valid -> set ho jayega
+        s1.setAge(-5);               // Invalid -> "Invalid age!" print hoga
+
+        System.out.println(s1.getName() + " " + s1.getAge());
+    }
+}
+
+
+3. ENCAPSULATION KE FAYDE (BENEFITS)
+-----------------------------------------
+   a) DATA HIDING / SECURITY
+      - Variables private hone se koi directly change nahi kar sakta
+      - Sirf class ke andar hi access possible hai
+
+   b) VALIDATION / CONTROL
+      - Setter method me hum validation laga sakte hain
+        (jaise age negative na ho, salary 0 se kam na ho, etc.)
+
+   c) FLEXIBILITY / MAINTAINABILITY
+      - Agar kal ko internal logic change karna ho, to bas method ke
+        andar change karo, jo bahar se use kar rahe hain unko pata bhi
+        nahi chalega (outside code break nahi hoga)
+
+   d) READ-ONLY / WRITE-ONLY properties bana sakte hain
+      - Sirf getter do (setter mat do) -> Read Only variable
+      - Sirf setter do (getter mat do) -> Write Only variable
+
+
+4. ACCESS MODIFIERS (Encapsulation ke liye zaroori)
+---------------------------------------------------------
+Java me 4 access modifiers hote hain jo control karte hain ki
+variable/method kahan se accessible hai:
+
+   MODIFIER          | SAME CLASS | SAME PACKAGE | SUBCLASS (diff pkg) | OUTSIDE (diff pkg)
+   --------------------|------------|--------------|----------------------|--------------------
+   private            |    YES     |     NO       |         NO           |        NO
+   default (no modif.) |    YES     |     YES      |         NO           |        NO
+   protected           |    YES     |     YES      |         YES          |        NO
+   public              |    YES     |     YES      |         YES          |        YES
+
+Encapsulation me hum mostly "private" variables + "public" methods use karte hain.
+
+
+5. FULLY ENCAPSULATED CLASS
+--------------------------------
+Ek class ko "Fully Encapsulated" tab kehte hain jab uske SAARE variables
+private ho, aur unhe access karne ke liye public getter/setter methods ho.
+
+Example: java.lang me "String", "Integer" jaise classes fully encapsulated hain.
+
+
+6. ENCAPSULATION vs ABSTRACTION (Common Confusion - IMPORTANT)
+-------------------------------------------------------------------
+   ENCAPSULATION                          | ABSTRACTION
+   -----------------------------------------|--------------------------------------
+   Data ko HIDE karta hai (private variables)| Implementation/Logic ko HIDE karta hai
+   "HOW data is protected" pe focus          | "WHAT to show, WHAT to hide" pe focus
+   Achieve hota hai: private + getter/setter | Achieve hota hai: abstract class/interface
+   Data-centric approach                     | Design/Behavior-centric approach
+
+   Simple line: Encapsulation = Data Hiding, Abstraction = Detail/Implementation Hiding
+
+
+7. INTERVIEW QUICK POINTS
+-----------------------------
+Q. Encapsulation ka matlab kya hai?
+A. Data (variables) aur methods ko ek class me bind karna, aur variables ko
+   private karke sirf getter/setter methods se access dena (Data Hiding).
+
+Q. Encapsulation achieve karne ke liye kya karte hain?
+A. Variables ko private banate hain aur public getter/setter methods provide karte hain.
+
+Q. Encapsulation aur Abstraction me kya fark hai?
+A. Encapsulation data ko hide karta hai (private variables ke through),
+   Abstraction implementation detail ko hide karta hai (abstract class/interface ke through).
+
+Q. Encapsulation ka real-world fayda?
+A. Security + Validation control + Code maintainability (internal changes
+   bahar ke code ko affect nahi karte).
+
+===================================================
+YE THA JAVA OOPs KA COMPLETE SET (6 FILES):
+1_Introduction_to_OOPs.txt
+2_Class_and_Object.txt
+3_Inheritance.txt
+4_Polymorphism.txt
+5_Abstraction.txt
+6_Encapsulation.txt
+===================================================
