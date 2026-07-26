@@ -1,1 +1,148 @@
-about 4_Polymorphism.txt
+===================================================
+TOPIC 4: POLYMORPHISM
+===================================================
+
+1. POLYMORPHISM KYA HAI?
+----------------------------
+"Poly" = many, "Morph" = forms  ->  "Many Forms"
+
+Polymorphism ka matlab hai ek hi method/object ka DIFFERENT situations me
+DIFFERENT tarike se behave karna.
+
+Real life example: Ek insaan (Person)
+   - Office me -> Employee ki tarah behave karta hai
+   - Ghar me    -> Father/Son ki tarah behave karta hai
+   - Market me  -> Customer ki tarah behave karta hai
+Same person, different forms/behavior situation ke hisaab se.
+
+
+2. TYPES OF POLYMORPHISM IN JAVA
+-------------------------------------
+a) COMPILE TIME POLYMORPHISM  (Static / Method Overloading)
+b) RUNTIME POLYMORPHISM        (Dynamic / Method Overriding)
+
+
+===================================================
+A) METHOD OVERLOADING (Compile Time Polymorphism)
+===================================================
+
+DEFINITION:
+Same class me SAME NAME ke multiple methods, lekin:
+   - Parameters ki number different ho, YA
+   - Parameters ka type different ho
+(Return type se overloading NAHI hoti)
+
+Ye compile time pe hi decide ho jata hai kaunsa method call hoga,
+isliye ise "Static/Compile-time Binding" kehte hain.
+
+class Calculator {
+    // 2 int add karna
+    int add(int a, int b) {
+        return a + b;
+    }
+
+    // 3 int add karna (parameters ki sankhya alag)
+    int add(int a, int b, int c) {
+        return a + b + c;
+    }
+
+    // double add karna (parameter type alag)
+    double add(double a, double b) {
+        return a + b;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Calculator c = new Calculator();
+        System.out.println(c.add(2, 3));         // calls add(int,int)   -> 5
+        System.out.println(c.add(2, 3, 4));       // calls add(int,int,int) -> 9
+        System.out.println(c.add(2.5, 3.5));      // calls add(double,double) -> 6.0
+    }
+}
+
+
+===================================================
+B) METHOD OVERRIDING (Runtime Polymorphism)
+===================================================
+
+DEFINITION:
+Jab CHILD CLASS, PARENT CLASS ke method ko SAME NAME, SAME PARAMETERS,
+SAME RETURN TYPE ke saath dobara define karti hai, use Method Overriding kehte hain.
+
+Ye RUNTIME pe decide hota hai ki kaunsa method call hoga (JVM decide karta hai
+object ke actual type ke basis pe) - isliye ise "Dynamic Binding" kehte hain.
+
+RULES for Overriding:
+   - Method name same hona chahiye
+   - Parameters same hone chahiye
+   - IS-A relationship (Inheritance) hona zaroori hai
+   - Access modifier child me same ya usse zyada open ho sakta hai (kam nahi)
+   - @Override annotation use karna best practice hai
+
+class Animal {
+    void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Cat meows");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal a1 = new Dog();    // Parent reference, Child object
+        Animal a2 = new Cat();
+
+        a1.sound();     // Output: Dog barks   (Runtime pe decide hua)
+        a2.sound();     // Output: Cat meows    (Runtime pe decide hua)
+    }
+}
+
+Ye upar wala example "Runtime Polymorphism" ka best example hai - kyunki
+Parent type ka reference (Animal) hai, lekin actual object ke hisaab se
+(Dog ya Cat) method call ho raha hai.
+
+
+3. OVERLOADING vs OVERRIDING (Difference Table)
+-----------------------------------------------------
+   OVERLOADING                          | OVERRIDING
+   --------------------------------------|---------------------------------------
+   Same class me hota hai                | Parent-Child class ke beech hota hai
+   Parameters different hone chahiye     | Parameters same hone chahiye
+   Compile time pe decide hota hai       | Runtime pe decide hota hai
+   Return type different ho sakta hai    | Return type same hona chahiye
+   Static/Compile-time Polymorphism      | Dynamic/Runtime Polymorphism
+
+
+4. INTERVIEW QUICK POINTS
+-----------------------------
+Q. Polymorphism ka matlab kya hai?
+A. Ek hi method/entity ka alag-alag form me behave karna.
+
+Q. Overloading aur Overriding me main difference?
+A. Overloading same class me parameters change karke hota hai (compile time),
+   Overriding parent-child class me same signature ke saath hota hai (runtime).
+
+Q. Kya hum static method ko override kar sakte hain?
+A. Nahi, static methods ko overload kiya ja sakta hai lekin override nahi
+   (unhe "method hiding" kehte hain).
+
+Q. @Override annotation ka use kyu karte hain?
+A. Compiler ko batane ke liye ki ye method parent class ko override kar
+   raha hai, agar spelling/signature galat ho to compile time error milegi.
+
+===================================================
+NEXT FILE -> 5_Abstraction.txt
+===================================================
