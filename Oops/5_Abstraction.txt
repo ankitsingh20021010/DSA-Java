@@ -1,1 +1,186 @@
-about 5_Abstraction.txt
+===================================================
+TOPIC 5: ABSTRACTION
+===================================================
+
+1. ABSTRACTION KYA HAI?
+---------------------------
+Abstraction ka matlab hai sirf IMPORTANT/ESSENTIAL details user ko dikhana,
+aur BACKGROUND/IMPLEMENTATION details ko chhupana (HIDE karna).
+
+Real life example:
+   - ATM machine: Hume sirf buttons dikhte hain (withdraw, balance check),
+     lekin internal me kya processing ho rahi hai (database, banking logic)
+     wo hume nahi dikhta -> Abstraction
+
+   - Car chalana: Hum steering, accelerator, brake use karte hain,
+     lekin engine ke andar kya ho raha hai wo hume pata nahi hota.
+
+
+2. ABSTRACTION JAVA ME KAISE ACHIEVE HOTI HAI?
+---------------------------------------------------
+Java me Abstraction 2 tarike se achieve hoti hai:
+   a) ABSTRACT CLASS (0 to 100% abstraction)
+   b) INTERFACE       (100% abstraction - traditionally)
+
+
+===================================================
+A) ABSTRACT CLASS
+===================================================
+
+DEFINITION:
+"abstract" keyword se banayi gayi class jiska object DIRECTLY nahi bana sakte.
+Isme abstract methods (bina body ke) aur normal methods (body ke saath) dono ho sakte hain.
+
+RULES:
+   - Abstract class ka object nahi bana sakte (new nahi kar sakte directly)
+   - Abstract method sirf declare hota hai, define nahi (no body, semicolon se end)
+   - Jo class abstract class ko extend karti hai, use SABHI abstract
+     methods ko override/define karna hi padega (warna wo bhi abstract ban jayegi)
+
+abstract class Shape {
+    abstract void draw();          // abstract method - no body
+
+    void info() {                  // normal method - body hai
+        System.out.println("This is a shape");
+    }
+}
+
+class Circle extends Shape {
+    @Override
+    void draw() {
+        System.out.println("Drawing a Circle");
+    }
+}
+
+class Square extends Shape {
+    @Override
+    void draw() {
+        System.out.println("Drawing a Square");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Shape s1 = new Circle();
+        Shape s2 = new Square();
+
+        s1.draw();     // Output: Drawing a Circle
+        s2.draw();     // Output: Drawing a Square
+
+        // Shape s3 = new Shape();   // ERROR! Abstract class ka object nahi ban sakta
+    }
+}
+
+
+===================================================
+B) INTERFACE
+===================================================
+
+DEFINITION:
+Interface ek pura blueprint hota hai jisme (traditionally, Java 7 tak) sirf
+abstract methods hote the (bina body ke). Java 8 ke baad default aur static
+methods bhi ho sakte hain (body ke saath).
+
+RULES:
+   - Interface ke andar methods by default "public abstract" hote hain
+   - Interface ke andar variables by default "public static final" (constants) hote hain
+   - Ek class interface ko "implements" keyword se implement karti hai
+   - Ek class MULTIPLE interfaces implement kar sakti hai (Multiple Inheritance
+     achieve karne ka Java me yahi tarika hai)
+
+interface Animal {
+    void eat();       // public abstract by default
+    void sound();
+}
+
+class Dog implements Animal {
+    @Override
+    public void eat() {
+        System.out.println("Dog is eating");
+    }
+    @Override
+    public void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal a = new Dog();
+        a.eat();      // Output: Dog is eating
+        a.sound();    // Output: Dog barks
+    }
+}
+
+MULTIPLE INTERFACE IMPLEMENTATION EXAMPLE:
+interface Printable {
+    void print();
+}
+interface Showable {
+    void show();
+}
+class Document implements Printable, Showable {
+    public void print() {
+        System.out.println("Printing document...");
+    }
+    public void show() {
+        System.out.println("Showing document...");
+    }
+}
+
+
+3. JAVA 8+ ME INTERFACE (default & static methods)
+-------------------------------------------------------
+interface Vehicle {
+    void run();
+
+    default void fuel() {                  // default method - body hoti hai
+        System.out.println("Fuel: Petrol/Diesel");
+    }
+
+    static void service() {                 // static method - body hoti hai
+        System.out.println("Service done every 6 months");
+    }
+}
+
+
+4. ABSTRACT CLASS vs INTERFACE (Difference Table)
+--------------------------------------------------------
+   ABSTRACT CLASS                        | INTERFACE
+   ----------------------------------------|-------------------------------------------
+   "extends" keyword use hota hai         | "implements" keyword use hota hai
+   Abstract + Normal methods dono ho       | (Java 8 se pehle) sirf abstract methods
+   sakte hain                              |
+   Multiple inheritance NAHI (ek hi        | Multiple interfaces implement kar sakte
+   class extend kar sakte)                 | hain (Multiple Inheritance possible)
+   Constructor ho sakta hai                | Constructor NAHI ho sakta
+   Variables kisi bhi type ke ho sakte hain| Variables by default public static final
+                                            | (constant)
+
+
+5. WHY USE ABSTRACTION? (Benefits)
+---------------------------------------
+   - Complexity hide hoti hai, sirf zaroori cheez dikhti hai
+   - Security badhti hai (implementation details chhupte hain)
+   - Code maintainability aasan hoti hai
+   - Loose coupling - hum interface ke against code likhte hain, implementation ke nahi
+
+
+6. INTERVIEW QUICK POINTS
+-----------------------------
+Q. Abstraction ka main purpose kya hai?
+A. Implementation details chhupana aur sirf essential features dikhana.
+
+Q. Abstract class aur Interface me kab konsa use kare?
+A. Agar common code (implementation) share karna hai to Abstract class,
+   agar sirf contract/rule define karna hai (multiple classes ke liye) to Interface.
+
+Q. Kya interface me constructor ho sakta hai?
+A. Nahi, kyunki interface ka object khud nahi banta.
+
+Q. Ek class multiple abstract class extend kar sakti hai?
+A. Nahi, lekin multiple interfaces implement kar sakti hai.
+
+===================================================
+NEXT FILE -> 6_Encapsulation.txt
+===================================================
