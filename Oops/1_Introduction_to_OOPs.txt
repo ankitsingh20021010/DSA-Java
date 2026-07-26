@@ -1,1 +1,111 @@
 
+===================================================
+TOPIC 1: INTRODUCTION TO OOPs (Object Oriented Programming)
+===================================================
+
+1. OOPs KYA HAI?
+-----------------
+OOPs (Object Oriented Programming System) ek programming paradigm/approach hai
+jisme program ko "objects" ke around design kiya jata hai, na ki functions/logic
+ke around (jaisa Procedural Programming me hota hai - C language).
+
+Simple bhasha me: Real world ki cheezo (jaise Car, Student, BankAccount) ko
+code me "object" bana kar represent karna, jisme:
+   - Data (properties/attributes)  -> variables
+   - Behavior (functions)          -> methods
+dono saath rehte hain.
+
+
+2. OOPs KI ZAROORAT (WHY OOPs?)
+--------------------------------
+Procedural Programming (C jaisi languages) me problem:
+   - Data aur function alag-alag hote hain, koi security nahi
+   - Code reuse mushkil hota hai
+   - Bada project manage karna mushkil ho jata hai
+   - Real world problems ko model karna tough hota hai
+
+OOPs isse solve karta hai:
+   - Data aur Methods ek object me bind (Encapsulation)
+   - Code reusability (Inheritance)
+   - Real world modeling easy (Class/Object)
+   - Security (data hiding)
+   - Flexibility (Polymorphism)
+
+
+3. OOPs KE 4 MAIN PILLARS (BAAS/BASE TOPICS)
+---------------------------------------------
+Pura OOPs in 4 concepts pe based hai (ye interview me sabse zyada pucha jata hai):
+
+   1) ENCAPSULATION   - Data aur code ko ek unit (class) me wrap karna + data hiding
+   2) ABSTRACTION      - Sirf important cheez dikhana, implementation detail chhupana
+   3) INHERITANCE      - Ek class ki properties/methods dusri class ko milna (reuse)
+   4) POLYMORPHISM      - Ek hi cheez ke multiple forms (many forms) -> overloading/overriding
+
+(Inn 4 topics ki alag detailed file bana rahe hain - file 3,4,5,6 dekho)
+
+
+4. OOPs KE OTHER IMPORTANT CONCEPTS
+------------------------------------
+   - CLASS   -> Blueprint/template (jaise "Car" ka design)
+   - OBJECT  -> Class ka real instance (jaise "Swift", "Creta" cars)
+   - CONSTRUCTOR -> Object banate time automatically call hone wala method
+   - THIS keyword -> current object ko refer karta hai
+   - STATIC keyword -> class level member (object ki zaroorat nahi)
+   - PACKAGE -> classes ko organize karne ka folder/namespace
+
+
+5. JAVA OOPs LANGUAGE KYU HAI?
+--------------------------------
+Java ek pure(almost) Object Oriented Language hai kyunki:
+   - Har cheez class ke andar likhi jati hai
+   - Supports: Encapsulation, Inheritance, Polymorphism, Abstraction
+   - (100% pure nahi kehte kyunki Java me primitive types like int, char,
+     boolean etc. object nahi hote)
+
+
+6. OOPs vs PROCEDURAL PROGRAMMING (Quick Difference)
+------------------------------------------------------
+   PROCEDURAL (C)                     |  OOPs (Java)
+   -----------------------------------|--------------------------------
+   Program divided into functions     | Program divided into objects
+   Data not secure (global access)    | Data secure (private + getter/setter)
+   Top-down approach                  | Bottom-up approach
+   Code reuse difficult               | Code reuse easy (Inheritance)
+   Real world modeling difficult      | Real world modeling easy
+
+
+7. SIMPLE JAVA EXAMPLE (Overview dikhane ke liye)
+----------------------------------------------------
+class Student {              // CLASS -> blueprint
+    String name;              // Data (Encapsulation)
+    int age;
+
+    void study() {             // Method (Behavior)
+        System.out.println(name + " is studying");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student s1 = new Student();   // OBJECT create hua
+        s1.name = "Rahul";
+        s1.age = 20;
+        s1.study();                    // Output: Rahul is studying
+    }
+}
+
+
+8. INTERVIEW QUICK POINTS
+----------------------------
+Q. OOPs kya hai?
+A. Programming approach jisme objects (data + behavior) ke around design hota hai.
+
+Q. OOPs ke 4 pillars konse hain?
+A. Encapsulation, Abstraction, Inheritance, Polymorphism.
+
+Q. Java pure OOP language hai kya?
+A. Nahi, kyunki primitive data types (int, char, etc.) object nahi hote.
+
+===================================================
+NEXT FILE -> 2_Class_and_Object.txt
+===================================================
