@@ -26,8 +26,5 @@ public class Linked_list{
         //data of list 2 means 5
          //finall output is  
          //data(4) ,add //address//data(5)
-
-
-       
     }
 }
