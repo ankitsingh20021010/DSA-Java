@@ -1,4 +1,4 @@
-public class Task1_PrintFirstNNumbers.java{
+public class Task1_PrintFirstNNumbers{
 
     static void nterm(int n){
         if(n==0){
