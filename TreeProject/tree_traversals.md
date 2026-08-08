@@ -127,15 +127,12 @@ D E B C A
 | Postorder | Left → Right → Root | D E B C A      |
 
 ---
-
 ## Applications
-
 * **Inorder:** Used in Binary Search Trees to print elements in sorted order.
 * **Preorder:** Used to create a copy of a tree and represent its structure.
 * **Postorder:** Used to delete a tree and evaluate expression trees.
 
 ---
-
 ## Conclusion
 
 Tree traversals are essential operations for accessing or processing all nodes of a tree. Choosing the appropriate traversal method depends on the application's requirements.
