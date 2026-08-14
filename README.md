@@ -1,6 +1,6 @@
 # Java OOPs – Four Pillars
 
-Object-Oriented Programming (OOP) is a programming approach based on **objects and classes**. Java is an object-oriented programming language that mainly follows four important pillars of OOP:
+Object-Oriented Programming (OOP) is a programming approach based on **objects and classes**. Java is an object-oriented programming language that mainly follows four important pillars of OOPs:
 
 1. **Encapsulation**
 2. **Inheritance**
@@ -17,7 +17,7 @@ It also helps to protect data by using access modifiers such as `private`, `publ
 
 ### Example
 
-```java
+````java
 class Student {
     private String name;
     private int age;
