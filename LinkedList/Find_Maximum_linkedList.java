@@ -7,7 +7,6 @@ class Node {
         this.next = null;
     }
 }
-
 public class InsertAtEnd {
 
     static Node head;
@@ -23,12 +22,10 @@ public class InsertAtEnd {
     }
     return max;
 }
-
-    // Insert at End
+   
     static void insertAtEnd(int data) {
         Node newNode = new Node(data);
 
-        // If list is empty
         if (head == null) {
             head = newNode;
             return;
@@ -36,16 +33,16 @@ public class InsertAtEnd {
 
         Node temp = head;
 
-        // Go to last node
+       
         while (temp.next != null) {
             temp = temp.next;
         }
 
-        // Insert new node at end
+       
         temp.next = newNode;
     }
 
-    // Display Linked List
+    
     static void display() {
         Node temp = head;
 
