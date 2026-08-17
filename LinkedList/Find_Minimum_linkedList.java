@@ -7,31 +7,63 @@ class Node {
         this.next = null;
     }
 }
+public class InsertAtEnd {
 
-public class Find_Minimum_linkedList {
-    public static void main(String[] args) {
+    static Node head;
+     static int minimum(Node head){
+    int min=head.data;
+    Node current=head;
 
-        Node head = new Node(10);
+    while(current!=null){
+        if(current.data<min){
+           min=current.data;
+        }
+        current=current.next;
+    }
+    return min;
+}
+   
+    static void insertAtEnd(int data) {
+        Node newNode = new Node(data);
 
-        head.next = new Node(50);
-        head.next.next = new Node(30);
-        head.next.next.next = new Node(90);
-        head.next.next.next.next = new Node(5);
-        head.next.next.next.next.next = new Node(70);
-
-        int min = head.data;
-
-        Node current = head;
-
-        while (current != null) {
-
-            if (current.data < min) {
-                min = current.data;
-            }
-
-            current = current.next;
+        if (head == null) {
+            head = newNode;
+            return;
         }
 
-        System.out.println("Minimum = " + min);
+        Node temp = head;
+
+       
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+
+       
+        temp.next = newNode;
+    }
+
+    
+    static void display() {
+        Node temp = head;
+
+        while (temp != null) {
+            System.out.print(temp.data + " -> ");
+            temp = temp.next;
+        }
+
+        System.out.println("NULL");
+    }
+
+    public static void main(String[] args) {
+
+        insertAtEnd(10);
+        insertAtEnd(20);
+        insertAtEnd(30);
+        insertAtEnd(40);
+        insertAtEnd(80);
+
+        display();
+        int a=minimum(head);
+        System.out.println(a+ " --> is min number in linked list");
     }
 }
