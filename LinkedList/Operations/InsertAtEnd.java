@@ -22,7 +22,7 @@ public class InsertAtEnd {
     }
     static void display(){
         Node temp=head;
-        while(temp.next!=null){
+        while(temp!=null){
             System.out.print(temp.data +"--->");
             temp=temp.next;
         }
