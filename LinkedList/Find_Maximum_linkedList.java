@@ -8,30 +8,65 @@ class Node {
     }
 }
 
-public class Find_Maximum_linkedList {
-    public static void main(String[] args) {
+public class InsertAtEnd {
 
-        Node head = new Node(10);
+    static Node head;
+     static int maximum(Node head){
+    int max=head.data;
+    Node current=head;
 
-        head.next = new Node(50);
-        head.next.next = new Node(30);
-        head.next.next.next = new Node(90);
-        head.next.next.next.next = new Node(40);
-        head.next.next.next.next.next = new Node(70);
+    while(current!=null){
+        if(current.data>max){
+           max=current.data;
+        }
+        current=current.next;
+    }
+    return max;
+}
 
-        int max = head.data;
+    // Insert at End
+    static void insertAtEnd(int data) {
+        Node newNode = new Node(data);
 
-        Node current = head;
-
-        while (current != null) {
-
-            if (current.data > max) {
-                max = current.data;
-            }
-
-            current = current.next;
+        // If list is empty
+        if (head == null) {
+            head = newNode;
+            return;
         }
 
-        System.out.println("Maximum = " + max);
+        Node temp = head;
+
+        // Go to last node
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+
+        // Insert new node at end
+        temp.next = newNode;
+    }
+
+    // Display Linked List
+    static void display() {
+        Node temp = head;
+
+        while (temp != null) {
+            System.out.print(temp.data + " -> ");
+            temp = temp.next;
+        }
+
+        System.out.println("NULL");
+    }
+
+    public static void main(String[] args) {
+
+        insertAtEnd(10);
+        insertAtEnd(20);
+        insertAtEnd(30);
+        insertAtEnd(40);
+        insertAtEnd(80);
+
+        display();
+        int a=maximum(head);
+        System.out.println(a+ " --> is max number");
     }
 }
