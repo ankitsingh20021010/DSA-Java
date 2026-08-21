@@ -6,8 +6,6 @@ public class MoveZeroes {
         int[] arr = {0, 1, 0, 3, 12};
 
         int j = 0;
-
-        // Non-zero elements ko starting me move karo
         for (int i = 0; i < arr.length; i++) {
 
             if (arr[i] != 0) {
@@ -18,8 +16,6 @@ public class MoveZeroes {
                 j++;
             }
         }
-
-        // Output
         for (int i = 0; i < arr.length; i++) {
             System.out.print(arr[i] + " ");
         }
